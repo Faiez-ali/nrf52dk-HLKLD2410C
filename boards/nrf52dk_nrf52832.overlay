@@ -1,0 +1,26 @@
+&uart0 {
+	status = "okay";
+	compatible = "nordic,nrf-uarte";
+	current-speed = <115200>;
+
+	pinctrl-0 = <&uart0_default>;
+	pinctrl-1 = <&uart0_sleep>;
+	pinctrl-names = "default", "sleep";
+};
+
+/ {
+	chosen {
+		arduino_serial = &uart0;
+	};
+};
+
+
+&gpio0 {
+	ld2410_out: ld2410_out {
+		compatible = "gpio-keys";
+		ld2410_motion {
+			label = "LD2410_OUT";
+			gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>; /* P0.11 */
+		};
+	};
+};
